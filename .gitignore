@@ -1,0 +1,7 @@
+/.vscode
+/KP.code-workspace
+/Model
+NDETCStemmer/Model
+*.pyc 
+*.pyo
+__pycache__
