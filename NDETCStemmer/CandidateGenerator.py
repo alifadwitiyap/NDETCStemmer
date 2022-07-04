@@ -26,7 +26,7 @@ class CandidateGenerator:
 
 		for self._candidate_keys in self._word_candidate:
 			for self._word_1 in range(0, len(self._word_candidate[self._candidate_keys])):
-				checkMatch={
+				check_match={
 					'matches_me':r'^me(.*)$',
 					'matches_di':r'^di(.*)$',
 					'matches_te':r'^te(.*)$',
@@ -38,8 +38,8 @@ class CandidateGenerator:
 					'matches_ny':r'^ny(.*)$',
 				}
 
-				for match_key in checkMatch:
-					isMatch=re.match(checkMatch[match_key], self._word_candidate[self._candidate_keys][self._word_1])
+				for match_key in check_match:
+					isMatch=re.match(check_match[match_key], self._word_candidate[self._candidate_keys][self._word_1])
 					if isMatch and match_key =='matches_me':
 						self._matches_me()
 						continue
@@ -72,14 +72,14 @@ class CandidateGenerator:
 	def _matches_me(self):
 		self._rules_generator.get('prefix_me').execute(word_candidate=self._word_candidate,word=self._word_candidate[self._candidate_keys][self._word_1],keys=self._candidate_keys) # memakan
 		for self._word_2 in range(0, len(self._word_candidate[self._candidate_keys])):
-			checkMatch={
+			check_match={
 					'matches_pe':r'^pe(.*)$',
 					'matches_be':r'^be(.*)$',
 					'matches_te':r'^te(.*)$',
 					'matches_se':r'^se(.*)$',
 				}
-			for match_key in checkMatch:
-				isMatch=re.match(checkMatch[match_key], self._word_candidate[self._candidate_keys][self._word_2])
+			for match_key in check_match:
+				isMatch=re.match(check_match[match_key], self._word_candidate[self._candidate_keys][self._word_2])
 				if isMatch and match_key =='matches_pe':
 					self._rules_generator.get('prefix_pe').execute(word_candidate=self._word_candidate,word=self._word_candidate[self._candidate_keys][self._word_2],keys=self._candidate_keys) # memperlambat
 					continue
@@ -96,7 +96,7 @@ class CandidateGenerator:
 	def _matches_di(self):
 		self._rules_generator.get('prefix_di').execute(word_candidate=self._word_candidate,word=self._word_candidate[self._candidate_keys][self._word_1],keys=self._candidate_keys) # dimakan
 		for self._word_2 in range(0, len(self._word_candidate[self._candidate_keys])):
-			checkMatch={
+			check_match={
 					'matches_pe':r'^pe(.*)$',
 					'matches_be':r'^be(.*)$',
 					'matches_ke':r'^ke(.*)$',
@@ -104,8 +104,8 @@ class CandidateGenerator:
 					'matches_me':r'^me(.*)$',
 					'matches_se':r'^se(.*)$',
 				}
-			for match_key in checkMatch:
-				isMatch=re.match(checkMatch[match_key], self._word_candidate[self._candidate_keys][self._word_2])
+			for match_key in check_match:
+				isMatch=re.match(check_match[match_key], self._word_candidate[self._candidate_keys][self._word_2])
 				if isMatch and match_key =='matches_pe':
 					self._rules_generator.get('prefix_pe').execute(word_candidate=self._word_candidate,word=self._word_candidate[self._candidate_keys][self._word_2],keys=self._candidate_keys) # diperlambat
 					continue
@@ -128,14 +128,14 @@ class CandidateGenerator:
 	def _matches_te(self):
 		self._rules_generator.get('prefix_te').execute(word_candidate=self._word_candidate,word=self._word_candidate[self._candidate_keys][self._word_1],keys=self._candidate_keys) # terbaca
 		for self._word_2 in range(0, len(self._word_candidate[self._candidate_keys])):
-			checkMatch={
+			check_match={
 					'matches_pe':r'^pe(.*)$',
 					'matches_be':r'^be(.*)$',
 					'matches_ke':r'^ke(.*)$',
 				}
 			
-			for match_key in checkMatch:
-				isMatch=re.match(checkMatch[match_key], self._word_candidate[self._candidate_keys][self._word_2])
+			for match_key in check_match:
+				isMatch=re.match(check_match[match_key], self._word_candidate[self._candidate_keys][self._word_2])
 				if isMatch and match_key =='matches_pe':
 					self._rules_generator.get('prefix_pe').execute(word_candidate=self._word_candidate,word=self._word_candidate[self._candidate_keys][self._word_2],keys=self._candidate_keys) # terperbaiki
 					continue
@@ -149,7 +149,7 @@ class CandidateGenerator:
 	def _matches_se(self):
 		self._rules_generator.get('prefix_se').execute(word_candidate=self._word_candidate,word=self._word_candidate[self._candidate_keys][self._word_1],keys=self._candidate_keys) # setahun
 		for self._word_2 in range(0, len(self._word_candidate[self._candidate_keys])):
-			checkMatch={
+			check_match={
 					'matches_pe':r'^pe(.*)$',
 					'matches_be':r'^be(.*)$',
 					'matches_se':r'^se(.*)$',
@@ -158,8 +158,8 @@ class CandidateGenerator:
 				}
 
 			
-			for match_key in checkMatch:
-				isMatch=re.match(checkMatch[match_key], self._word_candidate[self._candidate_keys][self._word_2])
+			for match_key in check_match:
+				isMatch=re.match(check_match[match_key], self._word_candidate[self._candidate_keys][self._word_2])
 				if isMatch and match_key =='matches_pe':
 					self._rules_generator.get('prefix_pe').execute(word_candidate=self._word_candidate,word=self._word_candidate[self._candidate_keys][self._word_2],keys=self._candidate_keys) # sependidikan
 					for self._word_3 in range(0, len(self._word_candidate[self._candidate_keys])):
@@ -189,14 +189,14 @@ class CandidateGenerator:
 	def _matches_be(self):
 		self._rules_generator.get('prefix_be').execute(word_candidate=self._word_candidate,word=self._word_candidate[self._candidate_keys][self._word_1],keys=self._candidate_keys) # bertahan
 		for self._word_2 in range(0, len(self._word_candidate[self._candidate_keys])):
-			checkMatch={
+			check_match={
 					'matches_ke':r'^ke(.*)$',
 					'matches_se':r'^se(.*)$',
 					'matches_pe':r'^pe(.*)$',
 				}
 			
-			for match_key in checkMatch:
-				isMatch=re.match(checkMatch[match_key], self._word_candidate[self._candidate_keys][self._word_2])
+			for match_key in check_match:
+				isMatch=re.match(check_match[match_key], self._word_candidate[self._candidate_keys][self._word_2])
 				if isMatch and match_key =='matches_ke':
 					self._rules_generator.get('prefix_ke').execute(word_candidate=self._word_candidate,word=self._word_candidate[self._candidate_keys][self._word_2],keys=self._candidate_keys) # berkedudukan
 					continue
@@ -221,15 +221,15 @@ class CandidateGenerator:
 	def _matches_pe(self):
 		self._rules_generator.get('prefix_pe').execute(word_candidate=self._word_candidate,word=self._word_candidate[self._candidate_keys][self._word_1],keys=self._candidate_keys) # petinju
 		for self._word_2 in range(0, len(self._word_candidate[self._candidate_keys])):
-			checkMatch={
+			check_match={
 					'matches_me':r'^me(.*)$',
 					'matches_ke':r'^ke(.*)$',
 					'matches_se':r'^se(.*)$',
 					'matches_be':r'^be(.*)$',
 				}
 			
-			for match_key in checkMatch:
-				isMatch=re.match(checkMatch[match_key], self._word_candidate[self._candidate_keys][self._word_2])
+			for match_key in check_match:
+				isMatch=re.match(check_match[match_key], self._word_candidate[self._candidate_keys][self._word_2])
 				if isMatch and match_key =='matches_me':
 					self._rules_generator.get('prefix_me').execute(word_candidate=self._word_candidate,word=self._word_candidate[self._candidate_keys][self._word_2],keys=self._candidate_keys) # pemerataan
 					continue
@@ -251,15 +251,15 @@ class CandidateGenerator:
 	def _matches_ke(self):
 		self._rules_generator.get('prefix_ke').execute(word_candidate=self._word_candidate,word=self._word_candidate[self._candidate_keys][self._word_1],keys=self._candidate_keys) # kejadian
 		for self._word_2 in range(0, len(self._word_candidate[self._candidate_keys])):
-			checkMatch={
+			check_match={
 					'matches_te':r'^te(.*)$',
 					'matches_be':r'^be(.*)$',
 					'matches_se':r'^se(.*)$',
 					'matches_pe':r'^pe(.*)$',
 				}
 			
-			for match_key in checkMatch:
-				isMatch=re.match(checkMatch[match_key], self._word_candidate[self._candidate_keys][self._word_2])
+			for match_key in check_match:
+				isMatch=re.match(check_match[match_key], self._word_candidate[self._candidate_keys][self._word_2])
 				if isMatch and match_key =='matches_te':
 					self._rules_generator.get('prefix_te').execute(word_candidate=self._word_candidate,word=self._word_candidate[self._candidate_keys][self._word_2],keys=self._candidate_keys) # keterpurukan
 					continue

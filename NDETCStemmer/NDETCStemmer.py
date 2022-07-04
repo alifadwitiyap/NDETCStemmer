@@ -13,28 +13,30 @@ class NDETCStemmer(NDETCStemmerAbstract):
 		# parent=True/False     True means that parent of ambiguous word include in the evaluation, otherwise excluding
 		"""
 		self._model=None
-		self._root_words=None
-		self._rare_words=None
-		self._compound_words=None
+		self._root_word_file=None
+		self._rare_word_file=None
+		self._compound_word_file=None
+		self._stopword_file=None
 		self._weight=weight
 		self._left_context=left_context
 		self._right_context=right_context
 		self._parent=parent
 
 		self.model='./NDETCStemmer/Model/w2vec_wiki_id_case'
-		self.rootWords='./NDETCStemmer/DictFile/root_words.txt'
-		self.rareWords='./NDETCStemmer/DictFile/rare_words.txt'
-		self.compoundWords='./NDETCStemmer/DictFile/compound_words.txt'
+		self.rootWord='./NDETCStemmer/DictFile/root_word.txt'
+		self.rareWord='./NDETCStemmer/DictFile/rare_word.txt'
+		self.compoundWords='./NDETCStemmer/DictFile/compound_word.txt'
+		self.stopWord='./NDETCStemmer/DictFile/stopword.txt'
 
 
-	def stem(self,inputStemmer,fromFile=False,stopword=False):
+	def stem(self,stemmer_input,from_file=False,stopword=False):
 		"""
-		# inputStemmer         input string
-		# fromFile=True/False  True means that input word will be read from file, otherwise input word will be string
-		# stop word=True/False  True means that input word will be remove words which exist in the list of stop word
+		# stemmer_input         input string
+		# from_file=True/False  True means that input word will be read from file, otherwise input word will be string
+		# stopword=True/False  True means that input word will be remove words which exist in the list of stop word
 		"""
-		normalizeText=normalizer.normalize(inputStemmer,fromFile=fromFile,stopword=stopword)
-		candidate=CandidateGenerator(normalizeText).generate()
+		stemmer_input=normalizer.normalize(stemmer_input,from_file=from_file,stopword=stopword,stopword_file=self._stopword_file)
+		candidate=CandidateGenerator(stemmer_input).generate()
 		print(candidate)
 		
 
