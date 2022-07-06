@@ -1,7 +1,7 @@
 
 from NDETCStemmer.NDETCStemmerAbstract import NDETCStemmerAbstract
 from NDETCStemmer.Utility import normalizer
-
+from NDETCStemmer.BestWordSelector import BestWordSelector
 from NDETCStemmer.CandidateGenerator import CandidateGenerator 
 
 class NDETCStemmer(NDETCStemmerAbstract):
@@ -25,19 +25,29 @@ class NDETCStemmer(NDETCStemmerAbstract):
 		self.model='./NDETCStemmer/Model/w2vec_wiki_id_case'
 		self.rootWord='./NDETCStemmer/DictFile/root_word.txt'
 		self.rareWord='./NDETCStemmer/DictFile/rare_word.txt'
-		self.compoundWords='./NDETCStemmer/DictFile/compound_word.txt'
+		self.compoundWord='./NDETCStemmer/DictFile/compound_word.txt'
 		self.stopWord='./NDETCStemmer/DictFile/stopword.txt'
 
 
-	def stem(self,stemmer_input,from_file=False,stopword=False):
+	def stem(self,stemmer_input,from_file=False,stopword=False,):
+		#TODO test ini besok
 		"""
 		# stemmer_input         input string
 		# from_file=True/False  True means that input word will be read from file, otherwise input word will be string
 		# stopword=True/False  True means that input word will be remove words which exist in the list of stop word
 		"""
 		stemmer_input=normalizer.normalize(stemmer_input,from_file=from_file,stopword=stopword,stopword_file=self._stopword_file)
-		candidate=CandidateGenerator(stemmer_input).generate()
-		print(candidate)
+		word_candidate=CandidateGenerator(stemmer_input).generate()
+		selector=BestWordSelector(stemmer_input=stemmer_input,model=self._model,root_word=self.rootWord,rare_word=self.rareWord,compound_word=self.compoundWord,weight=self._weight,left_context=self._left_context,right_context=self._right_context,parent=self._parent)
+		best_word=selector.select(word_candidate)
+		# return best_word
+
+		output = ''
+		for candidate_keys in range(len(best_word)):
+			output += best_word[candidate_keys][0] + ' '
+
+		return output
+
 		
 
 		
