@@ -13,7 +13,7 @@ best_word=stemmer.stem('perjalanan membawamu bertemu denganku Ku bertemu kamu Se
 
 elapsed_time = time.process_time() - t
 print('runtime : ',elapsed_time)
-# print('best_word : ',best_word)
+print('best_word : ',best_word)
 
 
 
