@@ -30,7 +30,6 @@ class NDETCStemmer(NDETCStemmerAbstract):
 
 
 	def stem(self,stemmer_input,from_file=False,stopword=False,):
-		#TODO test ini besok
 		"""
 		# stemmer_input         input string
 		# from_file=True/False  True means that input word will be read from file, otherwise input word will be string

@@ -8,18 +8,18 @@ stemmer=NDETCStemmer()
 # corr_dir='test/lp/correct_output_lp.txt'
 
 t = time.process_time()
-best_word=stemmer.stem('perjalanan membawamu bertemu denganku Ku bertemu kamu Sepertimu yang kucari Konon aku juga seperti yang kau cari')
+best_word=stemmer.stem('bibirnya memerah tangannya jadi selengket madu')
 # best_word=stemmer.stem(input_dir,from_file=True)
 
 elapsed_time = time.process_time() - t
-print('runtime : ',elapsed_time)
+print(f'runtime : {elapsed_time}ms')
 print('best_word : ',best_word)
 
 
 
 
 
-
+##
 
 # correct_output = normalizer.normalize(corr_dir,from_file=True)
 # input_words = normalizer.normalize(input_dir,from_file=True)
