@@ -1,4 +1,5 @@
 import setuptools
+from glob import glob
 
 with open("README.md", "r", encoding='utf-8') as fh:
     long_description = fh.read()
@@ -6,13 +7,16 @@ with open("README.md", "r", encoding='utf-8') as fh:
 
 setuptools.setup(
 name='NDETCStemmer',  
-version='1.0.1',
+version='1.0.2',
 py_modules=['NDETCStemmer'] ,
 description="Library untuk stemming kata dalam Bahasa Indonesia menggunakan metode Nondeterministic Context",
 long_description=long_description,
 long_description_content_type="text/markdown",
 url="https://github.com/alifadwitiyap/NDETCStemmer",
 packages=setuptools.find_packages(),
+data_files=[
+	('model', glob('NDETCStemmer/Model/*')),
+	],
 classifiers=[
 	# How mature is this project? Common values are
 	#   3 - Alpha

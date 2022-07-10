@@ -3,11 +3,21 @@
 Nondeterministic Context (NDETC) Stemmer adalah library yang mengimplementasikan metode stemming nondeterministic berbasis context untuk memecahkan permasalahan kata-kata ambigu morfologis pada proses stemming kata dalam bahasa indonesia.
 
 ## Installation
+clone file github
 ```bash
-  pip install NDETCStemmer
+  git clone https://github.com/alifadwitiyap/NDETCStemmer.git
+```
+masuk kedalam folder NDETCStemmer
+```bash
+  cd NDETCStemmer
+```
+install library
+```bash
+  pip install .
 ```
     
 ## Usage
+setelah menginstall library ini, anda dapat menggunakannya dengan membuat file baru didalam folder yang sama dengan NDETCStemmer_IO.py atau dengan cara mengubah file NDETCStemmer_IO.py dengan mengikuti baris code berikut sebagai percobaan :
 ```python
 #import NDETCStemmer library
 from NDETCStemmer import NDETCStemmer

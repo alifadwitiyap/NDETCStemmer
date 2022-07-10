@@ -1,25 +1,40 @@
 from NDETCStemmer import NDETCStemmer
-from NDETCStemmer.Utility import normalizer
-import time
 
 stemmer=NDETCStemmer()
+
+
+#import NDETCStemmer library
+from NDETCStemmer import NDETCStemmer
+
+#init stemmer
+stemmer=NDETCStemmer()
+
+# stemming process
+output=stemmer.stem('boleh saya memerah lembu ini')
+
+print(output)
+#boleh saya perah lembu ini
+
+print(stemmer.stem('bibirnya memerah tangannya jadi selengket madu'))
+# #bibir merah tangan jadi lengket madu
+
+
+
+
+
+## For test only
+
+# import time
+# from NDETCStemmer.Utility import normalizer
 
 # input_dir='test/lp/input_lp.txt'
 # corr_dir='test/lp/correct_output_lp.txt'
 
-t = time.process_time()
-best_word=stemmer.stem('bibirnya memerah tangannya jadi selengket madu')
+# t = time.process_time()
 # best_word=stemmer.stem(input_dir,from_file=True)
+# elapsed_time = time.process_time() - t
+# print(f'runtime : {elapsed_time}ms')
 
-elapsed_time = time.process_time() - t
-print(f'runtime : {elapsed_time}ms')
-print('best_word : ',best_word)
-
-
-
-
-
-##
 
 # correct_output = normalizer.normalize(corr_dir,from_file=True)
 # input_words = normalizer.normalize(input_dir,from_file=True)

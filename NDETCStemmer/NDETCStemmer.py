@@ -39,6 +39,8 @@ class NDETCStemmer(NDETCStemmerAbstract):
 		word_candidate=CandidateGenerator(stemmer_input).generate()
 		selector=BestWordSelector(stemmer_input=stemmer_input,model=self._model,root_word=self.rootWord,rare_word=self.rareWord,compound_word=self.compoundWord,weight=self._weight,left_context=self._left_context,right_context=self._right_context,parent=self._parent)
 		best_word=selector.select(word_candidate)
+
+		#for test only 
 		# return best_word
 
 		output = ''
