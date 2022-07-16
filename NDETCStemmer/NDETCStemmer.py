@@ -4,6 +4,7 @@ from NDETCStemmer.Utility import normalizer
 from NDETCStemmer.BestWordSelector import BestWordSelector
 from NDETCStemmer.CandidateGenerator import CandidateGenerator 
 from NDETCStemmer.ModelDownloader import ModelDownloader
+import os
 
 class NDETCStemmer(NDETCStemmerAbstract):
 	def __init__(self,weight=1, left_context=1, right_context=1, parent=True):
@@ -24,11 +25,13 @@ class NDETCStemmer(NDETCStemmerAbstract):
 		self._parent=parent
 
 		ModelDownloader()
-		self.model='./NDETCStemmer/Model/w2vec_wiki_id_case'
-		self.rootWord='./NDETCStemmer/DictFile/root_word.txt'
-		self.rareWord='./NDETCStemmer/DictFile/rare_word.txt'
-		self.compoundWord='./NDETCStemmer/DictFile/compound_word.txt'
-		self.stopWord='./NDETCStemmer/DictFile/stopword.txt'
+		self.path=os.path.dirname(__file__) 
+		self.model=os.path.join(self.path,'Model','w2vec_wiki_id_case')
+		self.rootWord=os.path.join(self.path,'DictFile','root_word.txt')
+		self.rareWord=os.path.join(self.path,'DictFile','rare_word.txt')
+		self.compoundWord=os.path.join(self.path,'DictFile','compound_word.txt')
+		self.stopWord=os.path.join(self.path,'DictFile','stopword.txt')
+
 
 
 	def stem(self,stemmer_input,from_file=False,stopword=False,):
