@@ -7,7 +7,7 @@ clone file github
 ```bash
   git clone https://github.com/alifadwitiyap/NDETCStemmer.git
 ```
-masuk kedalam folder NDETCStemmer
+masuk ke dalam folder NDETCStemmer
 ```bash
   cd NDETCStemmer
 ```
