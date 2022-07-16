@@ -1,6 +1,6 @@
 # Nondeterministic Context (NDETC) Stemmer
 
-Nondeterministic Context (NDETC) Stemmer adalah library yang mengimplementasikan metode stemming nondeterministic berbasis context untuk memecahkan permasalahan kata-kata ambigu morfologis pada proses stemming kata dalam bahasa Indonesia.
+Nondeterministic Context (NDETC) Stemmer adalah library yang mengimplementasikan metode stemming nondeterministic berbasis context untuk memecahkan permasalahan kata-kata ambigu (bermakna lebih dari satu) morfologis pada proses stemming kata dalam bahasa Indonesia.
 
 ## Installation
 clone file github
@@ -55,13 +55,26 @@ Merupakan stemmer yang dikembangkan oleh Bunyamin et al. yang merupakan peneliti
 
 
 #### Kelebihan
-Stemming kata ambigu, kata reduplikasi, dan kata majemuk dengan imbuhan. Namun, kualitas stemmer tergantung pada pemeriksa aturan afiks, model kata, kamus kata dasar, dan konteksnya.
+NDETC stemmer mampu menstemming kata ambigu, kata reduplikasi, dan kata majemuk dengan imbuhan. Namun, kualitas stemmer tergantung pada pemeriksa aturan afiks, model kata, kamus kata dasar, dan konteksnya. Berikut beberapa contoh kelebihan nondeterministc context stemmer (NDETC) dibandingkan deterministic stemmer (DET):
+- Input: kalau pandai menggulai, badar jadi tenggiri, output (NDETC): kalau pandai gulai badar jadi tenggiri. Output (DET): kalau pandai gulai badar jadi tenggiri  
+- Input: ibu <b>menggulai</b> kopi. Output (NDETC): ibu <b>gula</b> kopi. Output (DET): ibu <b>gulai</b> kopi
+- Input: <b>Selangkah</b> lagi, Pedrosa jadi pembalap tes KTM. Output (NDETC): <b>langkah</b> lagi pedrosa jadi balap tes ktm. Output (DET): <b>selang</b> lagi pedrosa jadi balap tes ktm    
+- Input: Indonesia memiliki beribu-ribu pulau. Output (NDETC): indonesia milik ribu pulau. Output (DET): indonesia milik beribu-ribu pulau
+- Input: Kita harus mempertanggungjawabkannya. Output (NDETC): kita harus tanggung jawab. Output (DET): kita harus mempertanggungjawabkannya
+- Input: pengampun. Output (NDETC): ampun. Output (DET): kam
+- Input: membantah. Output (NDETC): bantah. Output (DET): ban  
+- Input: pemakalah. Output (NDETC): makalah. Output (DET): maka
+- Input: berimanlah. Output (NDETC): iman. Output (DET): rim
+- Input: berantai. Output (NDETC): rantai. Output (DET): beranta
+- Input: berduri. Output (NDETC): duri. Output (DET): dur
+- Input: peperangan. Output (NDETC): perang. Output (DET): peperangan
+
 #### Kekurangan
-- Aturan infiks -el-, -em-, -er-, dan -in- dibuang dalam metode ini karena aturan memiliki dampak signifikan terhadap semua proses stemmer
-- Konteks berupa kata-kata yang berada sebelum dan sesudah kata-kata ambigu morfologis seringkali tidak mendukung pemilihan kata-kata terbaik sama sekali
+- Aturan infiks -el-, -em-, -er-, dan -in- dibuang dalam stemmer ini karena memiliki dampak signifikan terhadap semua proses stemmer.
+- Konteks berupa kata-kata yang berada sebelum dan sesudah kata-kata ambigu morfologis seringkali tidak mendukung pemilihan kata-kata terbaik.
 
 #### Penting
-- Kualitas model kata hasil pelatihan word2vec mempengaruhi pemilihan kata-kata terbaik dalam kata-kata ambigu. Model kata dibuat menggunakan pelatihan word2vec dengan beberapa parameter. Beberapa parameter dalam membuat model harus dipilih dengan cermat dan hasilnya harus dibandingkan dari satu model ke model lainnya.
+- Kualitas model kata hasil pelatihan word2vec mempengaruhi pemilihan kata-kata terbaik dalam kata-kata ambigu. Model kata dibuat menggunakan pelatihan word2vec dengan beberapa parameter. Beberapa parameter dalam membuat model harus dipilih dengan cermat dan hasilnya harus dibandingkan dari satu model ke model lainnya. Dalam stemmer ini terdapat model yang telah dilatih dengan menggunakan corpus wikipedia berbahasa Indonesia yang diunduh tanggal 2 November 2021. 
 - Kamus kata dasar juga mempengaruhi kualitas stemmer. Kamus kata dasar harus bebas dari kata berimbuhan.
 
 ## License
