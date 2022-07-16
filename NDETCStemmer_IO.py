@@ -3,7 +3,9 @@ from NDETCStemmer import NDETCStemmer
 stemmer=NDETCStemmer()
 
 
-#import NDETCStemmer library
+# From text test
+
+# import NDETCStemmer library
 from NDETCStemmer import NDETCStemmer
 
 #init stemmer
@@ -22,7 +24,7 @@ print(stemmer.stem('bibirnya memerah tangannya jadi selengket madu'))
 
 
 
-## For test only
+# # from file test
 
 # import time
 # from NDETCStemmer.Utility import normalizer

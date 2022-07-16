@@ -3,6 +3,7 @@ from NDETCStemmer.NDETCStemmerAbstract import NDETCStemmerAbstract
 from NDETCStemmer.Utility import normalizer
 from NDETCStemmer.BestWordSelector import BestWordSelector
 from NDETCStemmer.CandidateGenerator import CandidateGenerator 
+from NDETCStemmer.ModelDownloader import ModelDownloader
 
 class NDETCStemmer(NDETCStemmerAbstract):
 	def __init__(self,weight=1, left_context=1, right_context=1, parent=True):
@@ -22,6 +23,7 @@ class NDETCStemmer(NDETCStemmerAbstract):
 		self._right_context=right_context
 		self._parent=parent
 
+		ModelDownloader()
 		self.model='./NDETCStemmer/Model/w2vec_wiki_id_case'
 		self.rootWord='./NDETCStemmer/DictFile/root_word.txt'
 		self.rareWord='./NDETCStemmer/DictFile/rare_word.txt'
@@ -40,7 +42,7 @@ class NDETCStemmer(NDETCStemmerAbstract):
 		selector=BestWordSelector(stemmer_input=stemmer_input,model=self._model,root_word=self.rootWord,rare_word=self.rareWord,compound_word=self.compoundWord,weight=self._weight,left_context=self._left_context,right_context=self._right_context,parent=self._parent)
 		best_word=selector.select(word_candidate)
 
-		#for test only 
+		# # for test only 
 		# return best_word
 
 		output = ''
