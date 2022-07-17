@@ -3,16 +3,17 @@ import setuptools
 with open("README.md", "r", encoding='utf-8') as fh:
     long_description = fh.read()
 
-
 setuptools.setup(
 name='NDETCStemmer',  
-version='1.1.2',
+version='1.3.0',
 py_modules=['NDETCStemmer'] ,
 description="Library untuk stemming kata dalam Bahasa Indonesia menggunakan metode Nondeterministic Context",
 long_description=long_description,
 long_description_content_type="text/markdown",
 url="https://github.com/alifadwitiyap/NDETCStemmer",
 packages=setuptools.find_packages(),
+include_package_data=True,
+zip_safe=False,
 classifiers=[
 	# How mature is this project? Common values are
 	#   3 - Alpha
@@ -31,6 +32,7 @@ keywords='linguistic stemming indonesian bahasa',
 install_requires=[
 	'nltk',
 	'gensim',
-	'wget'
+	'gdown',
+	'checksumdir'
 ]
 )
