@@ -44,16 +44,16 @@ print(stemmer.stem('bibirnya memerah tangannya jadi selengket madu'))
 ```
 
 ## Tentang Nondeterministic Context Stemmer
-Merupakan stemmer yang dikembangkan oleh Bunyamin et al. yang merupakan penelitian lanjutan dari pendekatan nondeterministic yang diusulkan oleh Purwarianti. Dalam penelitian Purwarianti, setiap kata tidak diperiksa menurut urutan aturan morfologi, tetapi diperiksa menggunakan semua aturan. Kemudian, hasilnya disimpan satu per satu dalam daftar kandidat kata. Kata akhir akan dipilih menggunakan beberapa aturan heuristik, yaitu ketersediaan kosakata dari kata dasar khusus dan panjang kata. </br> </br>Masalah yang dihadapi oleh metode yang dikembangkan Purwarianti ini dan stemmer berbahasa Indonesia umumnya adalah masalah ambiguitas kata yang dihasilkan oleh stemmer. Misalkan kata "memalukan" mempunyai 2 kata dasar, yaitu “malu”  dan “palu” , tergantung konteksnya. Pada pernyataan-pernyataan berikut “dia tidak ingin memalukan keluarganya” dan “tukang memalukan paku di tembok” kata ambigu "memalukan" akan menghasilkan kata dasar "malu" secara terus-menerus. Berdasarkan konteksnya, hasilnya seharusnya menjadi "malu" di kalimat pertama dan "palu" di kalimat kedua. Nondeterministic stemmer dari Purwarianti menghasilkan beberapa alternatif kandidat kata dari kata-kata ambigu tersebut, tetapi memiliki kelemahan dalam memilih hasil yang tepat, karena ketiadaan konteks. </br></br>Nondeterministic Context Stemmer memperbaiki pendekatan nondeterministik itu dengan menambahkan konteks dalam pemilihan kata terbaik. Dalam menyelesaikan masalah pemilihan kata terbaik untuk setiap masukan kata ambigu, diusulkan penggunaan model word2vec. Dengan cara ini stemmer akan lebih akurat dalam melakukan stemming dibandingkan dengan cara-cara sebelumnya.
+Merupakan stemmer yang dikembangkan oleh <a href="https://ieeexplore.ieee.org/document/9617514">Bunyamin et al.</a> yang merupakan penelitian lanjutan dari pendekatan nondeterministic yang diusulkan oleh <a href="https://ieeexplore.ieee.org/document/6021829">Purwarianti</a>. Dalam penelitian Purwarianti, setiap kata tidak diperiksa menurut urutan aturan morfologi, tetapi diperiksa menggunakan semua aturan. Kemudian, hasilnya disimpan satu per satu dalam daftar kandidat kata. Kata akhir akan dipilih menggunakan beberapa aturan heuristik, yaitu ketersediaan kosakata dari kata dasar khusus dan panjang kata. </br> </br>Masalah yang dihadapi oleh metode nondeterministic yang dikembangkan Purwarianti ini dan stemmer deterministic (<a href="https://dl.acm.org/doi/10.1145/1316457.1316459">Andiani et al.</a>) adalah masalah ambiguitas kata yang dihasilkan oleh stemmer. Misalkan kata "memalukan" mempunyai 2 kata dasar, yaitu “malu”  dan “palu” , tergantung konteksnya. Pada pernyataan-pernyataan berikut “dia tidak ingin memalukan keluarganya” dan “tukang memalukan paku di tembok” kata ambigu "memalukan" akan menghasilkan kata dasar "malu" secara terus-menerus. Berdasarkan konteksnya, hasilnya seharusnya menjadi "malu" di kalimat pertama dan "palu" di kalimat kedua. Nondeterministic stemmer dari Purwarianti menghasilkan beberapa alternatif kandidat kata dari kata-kata ambigu tersebut, tetapi memiliki kelemahan dalam memilih hasil yang tepat, karena ketiadaan konteks. </br></br>Nondeterministic Context Stemmer memperbaiki pendekatan nondeterministik itu dengan menambahkan konteks dalam pemilihan kata terbaik. Dalam menyelesaikan masalah pemilihan kata terbaik untuk setiap masukan kata ambigu, diusulkan penggunaan model word2vec. Dengan cara ini stemmer akan lebih akurat dalam melakukan stemming dibandingkan dengan cara-cara sebelumnya.
 
 
 #### Kelebihan
 NDETC stemmer mampu menstemming kata ambigu, kata reduplikasi, dan kata majemuk dengan imbuhan. Namun, kualitas stemmer tergantung pada pemeriksa aturan afiks, model kata, kamus kata dasar, dan konteksnya. Berikut beberapa contoh kelebihan nondeterministc context stemmer (NDETC) dibandingkan deterministic stemmer (DET):
-- Input: kalau pandai menggulai, badar jadi tenggiri, output (NDETC): kalau pandai gulai badar jadi tenggiri. Output (DET): kalau pandai gulai badar jadi tenggiri  
+- Input: kalau pandai <b>menggulai</b>, badar jadi tenggiri, output (NDETC): kalau pandai <b>gulai</b> badar jadi tenggiri. Output (DET): kalau pandai <b>gulai</b> badar jadi tenggiri  
 - Input: ibu <b>menggulai</b> kopi. Output (NDETC): ibu <b>gula</b> kopi. Output (DET): ibu <b>gulai</b> kopi
 - Input: <b>Selangkah</b> lagi, Pedrosa jadi pembalap tes KTM. Output (NDETC): <b>langkah</b> lagi pedrosa jadi balap tes ktm. Output (DET): <b>selang</b> lagi pedrosa jadi balap tes ktm    
-- Input: Indonesia memiliki beribu-ribu pulau. Output (NDETC): indonesia milik ribu pulau. Output (DET): indonesia milik beribu-ribu pulau
-- Input: Kita harus mempertanggungjawabkannya. Output (NDETC): kita harus tanggung jawab. Output (DET): kita harus mempertanggungjawabkannya
+- Input: Indonesia memiliki <b>beribu-ribu</b> pulau. Output (NDETC): indonesia milik <b>ribu</b> pulau. Output (DET): indonesia milik <b>beribu-ribu</b> pulau
+- Input: Kita harus <b>mempertanggungjawabkannya</b>. Output (NDETC): kita harus <b>tanggung jawab</b>. Output (DET): kita harus <b>mempertanggungjawabkannya</b>
 - Input: pengampun. Output (NDETC): ampun. Output (DET): kam
 - Input: membantah. Output (NDETC): bantah. Output (DET): ban  
 - Input: pemakalah. Output (NDETC): makalah. Output (DET): maka
@@ -63,12 +63,12 @@ NDETC stemmer mampu menstemming kata ambigu, kata reduplikasi, dan kata majemuk 
 - Input: peperangan. Output (NDETC): perang. Output (DET): peperangan
 
 #### Kekurangan
-- Aturan infiks -el-, -em-, -er-, dan -in- dibuang dalam stemmer ini karena memiliki dampak signifikan terhadap semua proses stemmer.
-- Konteks berupa kata-kata yang berada sebelum dan sesudah kata-kata ambigu morfologis seringkali tidak mendukung pemilihan kata-kata terbaik.
+- Aturan infiks -el-, -em-, -er-, dan -in- tidak digunakan dalam stemmer ini karena memiliki dampak signifikan terhadap semua proses stemmer.
+- Konteks kata sebelum dan sesudah kata-kata ambigu morfologis seringkali tidak mendukung pemilihan kata-kata terbaik.
 
 #### Penting
 - Kualitas model kata hasil pelatihan word2vec mempengaruhi pemilihan kata-kata terbaik dalam kata-kata ambigu. Model kata dibuat menggunakan pelatihan word2vec dengan beberapa parameter. Beberapa parameter dalam membuat model harus dipilih dengan cermat dan hasilnya harus dibandingkan dari satu model ke model lainnya. Dalam stemmer ini terdapat model yang telah dilatih dengan menggunakan corpus wikipedia berbahasa Indonesia yang diunduh tanggal 2 November 2021. 
-- Kamus kata dasar juga mempengaruhi kualitas stemmer. Kamus kata dasar harus bebas dari kata berimbuhan.
+- Kualitas kamus kata dasar mempengaruhi kualitas stemmer. Kamus kata dasar harus bebas dari kata berimbuhan.
 
 ## License
 
