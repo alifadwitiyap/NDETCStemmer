@@ -6,7 +6,7 @@ def init(generator_rules):
 	generator_rules.add('particle',ListRules([particle_rule]))
 	generator_rules.add('suffix',ListRules([suffix2e_rule_v2]))
 	generator_rules.add('possessive_pronoun',ListRules([possessive_pronoun_rule]))
-	generator_rules.add('reduplication',ListRules([reduplication1_rule,reduplication2_rule]))
+	generator_rules.add('reduplication',ListRules([reduplication1_rule,reduplication1_rule,reduplication2_rule]))
 	generator_rules.add('infix',ListRules([infix1_rule,infix2_rule,infix3_rule,infix4_rule]))
 	generator_rules.add('prefix_ku',ListRules([prefix41_rule]))
 	generator_rules.add('prefix_kau',ListRules([prefix40_rule]))
