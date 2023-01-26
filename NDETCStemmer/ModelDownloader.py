@@ -12,9 +12,8 @@ class ModelDownloader:
 
 		self._path=os.path.dirname(__file__) 
 		self._path = os.path.join(self._path,'Model')
-
-
-
+  
+	def run(self):
 		while not self._isValidModel() or not self._isModelExist():
 			self._downloadModel()
 
