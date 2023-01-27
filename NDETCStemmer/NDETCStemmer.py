@@ -4,7 +4,7 @@ from NDETCStemmer.Utility import normalizer
 from NDETCStemmer.BestWordSelector import BestWordSelector
 from NDETCStemmer.CandidateGenerator import CandidateGenerator 
 from NDETCStemmer.ModelDownloader import ModelDownloader
-from NDETCStemmer.CustomModelDownloader import CustomModelDownloader
+from NDETCStemmer.ModelDownloader import CustomModelDownloader
 from typing import Optional
 import os
 
