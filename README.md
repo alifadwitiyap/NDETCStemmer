@@ -6,7 +6,7 @@ Nondeterministic Context (NDETC) Stemmer adalah library yang mengimplementasikan
 Untuk menginstall library ini diperlukan pip python yang dapat anda download dengan mengikuti link [berikut](https://pip.pypa.io/en/stable/installation/#).
 Kemudian anda dapat menjalankan kode berikut pada terminal yang anda gunakan
 ```bash
-  pip install NDETCStemmer
+pip install git+https://github.com/kaenova/NDETCStemmer.git@master
 ```
     
 ## Usage
@@ -27,6 +27,26 @@ print(output)
 print(stemmer.stem('bibirnya memerah tangannya jadi selengket madu'))
 #bibir merah tangan jadi lengket madu
 
+```
+Untuk menggunakan alamat download model dari luar, silakan untuk menggunakan `CustomModelDownloader` dengan contoh seperti di bawah:
+```python
+from NDETCStemmer import NDETCStemmer, CustomModelDownloader
+
+downloader = CustomModelDownloader(
+    model_1="https://is3.cloudhost.id/s3.kaenova.my.id/NDETCStemmer/Model/w2vec_wiki_id_case",
+    model_2="https://is3.cloudhost.id/s3.kaenova.my.id/NDETCStemmer/Model/w2vec_wiki_id_case.trainables.syn1neg.npy",
+    model_3="https://is3.cloudhost.id/s3.kaenova.my.id/NDETCStemmer/Model/w2vec_wiki_id_case.wv.vectors.npy"
+)
+
+stemmer=NDETCStemmer(custom_downloader=downloader)
+
+# stemming process
+output=stemmer.stem('boleh saya memerah lembu ini')
+
+print(output)
+#boleh saya perah lembu ini
+
+print(stemmer.stem('bibirnya memerah tangannya jadi selengket madu'))
 ```
 
 

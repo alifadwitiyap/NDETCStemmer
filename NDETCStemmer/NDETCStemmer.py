@@ -4,10 +4,12 @@ from NDETCStemmer.Utility import normalizer
 from NDETCStemmer.BestWordSelector import BestWordSelector
 from NDETCStemmer.CandidateGenerator import CandidateGenerator 
 from NDETCStemmer.ModelDownloader import ModelDownloader
+from NDETCStemmer.ModelDownloader import CustomModelDownloader
+from typing import Optional
 import os
 
 class NDETCStemmer(NDETCStemmerAbstract):
-	def __init__(self,weight=1, left_context=1, right_context=1, parent=True):
+	def __init__(self,weight=1, left_context=1, right_context=1, parent=True, custom_downloader: Optional[CustomModelDownloader] = None):
 		"""
 		# weight               weight similarity  
 		# left_context          maximum left context to eval
@@ -23,8 +25,11 @@ class NDETCStemmer(NDETCStemmerAbstract):
 		self._left_context=left_context
 		self._right_context=right_context
 		self._parent=parent
-
-		ModelDownloader()
+		
+		downloader = ModelDownloader()
+		if custom_downloader is not None:
+			downloader = custom_downloader
+		downloader.run()
 		self.path=os.path.dirname(__file__) 
 		self.model=os.path.join(self.path,'Model','w2vec_wiki_id_case')
 		self.rootWord=os.path.join(self.path,'DictFile','root_word.txt')
