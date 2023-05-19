@@ -6,7 +6,7 @@ Nondeterministic Context (NDETC) Stemmer adalah library yang mengimplementasikan
 Untuk menginstall library ini diperlukan pip python yang dapat anda download dengan mengikuti link [berikut](https://pip.pypa.io/en/stable/installation/#).
 Kemudian anda dapat menjalankan kode berikut pada terminal yang anda gunakan
 ```bash
-pip install git+https://github.com/kaenova/NDETCStemmer.git@master
+pip install NDETCStemmer
 ```
     
 ## Usage
